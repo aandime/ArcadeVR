@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Basketball
   - Projectiles
+  - Dartboard
+  - 1pt
+  - 5pt
+  - 10pt
   layers:
   - Default
   - TransparentFX
