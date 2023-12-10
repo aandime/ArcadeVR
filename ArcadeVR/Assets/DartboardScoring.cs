@@ -3,30 +3,81 @@ using TMPro;
 
 public class DartboardScoring : MonoBehaviour
 {
+    public static DartboardScoring Instance;
+
     public TMP_Text scoreText;
+    public TMP_Text timerText;
+    public ParticleSystem timerEndParticleSystem;
+
+    public float timerDuration = 20f;
+    private float timeRemaining;
+    private bool timerIsRunning = false;
+
     private int score = 0;
 
-    private void OnTriggerEnter(Collider other)
+    private void Awake()
     {
-        Debug.Log("Hit detected on: " + other.tag); // Logs the tag of the collider hit
-        
-        if (other.CompareTag("10pt"))
+        if (Instance == null)
         {
-            AddScore(10); // Center hit
+            Instance = this;
+            timeRemaining = timerDuration;
         }
-        else if (other.CompareTag("5pt"))
+        else
         {
-            AddScore(5); // Medium zone hit
-        }
-        else if (other.CompareTag("1pt"))
-        {
-            AddScore(1); // Outer zone hit
+            Destroy(gameObject);
         }
     }
 
-    private void AddScore(int points)
+    private void Update()
     {
+        if (timerIsRunning)
+        {
+            if (timeRemaining > 0)
+            {
+                timeRemaining -= Time.deltaTime;
+                UpdateTimerDisplay();
+            }
+            else
+            {
+                timeRemaining = 0;
+                timerIsRunning = false;
+                ResetGame();
+            }
+        }
+    }
+
+    public void AddScore(int points)
+    {
+        if (!timerIsRunning)
+        {
+            StartTimer();
+        }
+
         score += points;
         scoreText.text = "Score: " + score;
+    }
+
+    private void StartTimer()
+    {
+        timerIsRunning = true;
+        timeRemaining = timerDuration; // Reset timer to 60 seconds
+    }
+
+    private void ResetGame()
+    {
+        score = 0;
+        scoreText.text = "Score: " + score;
+        timerText.text = "Time: 20";
+        timeRemaining = timerDuration; // Reset the timer
+
+        if (timerEndParticleSystem != null)
+        {
+            timerEndParticleSystem.Play();
+        }
+    }
+
+    private void UpdateTimerDisplay()
+    {
+        timerText.text = "Time: " + Mathf.RoundToInt(timeRemaining);
     }
 }

@@ -10,6 +10,7 @@ TagManager:
   - 1pt
   - 5pt
   - 10pt
+  - Dart
   layers:
   - Default
   - TransparentFX

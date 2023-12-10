@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class DartController : MonoBehaviour
+public class MovingDartController : MonoBehaviour
 {
     public float shootForce = 500f; // Adjust the force as needed
     public Transform dartboardCenter; // Assign the center of the dartboard in the inspector
@@ -79,15 +79,15 @@ public class DartController : MonoBehaviour
 
         if (distance <= centerZoneRadius)
         {
-            DartboardScoring.Instance.AddScore(10);
+            MovingDartboardScoring.Instance.AddScore(10);
         }
         else if (distance <= mediumZoneRadius)
         {
-            DartboardScoring.Instance.AddScore(5);
+            MovingDartboardScoring.Instance.AddScore(5);
         }
         else if (distance <= outerZoneRadius)
         {
-            DartboardScoring.Instance.AddScore(1);
+            MovingDartboardScoring.Instance.AddScore(1);
         }
     }
 
