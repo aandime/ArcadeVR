@@ -7,6 +7,7 @@ Library: /Users/andydong/ArcadeVR/ArcadeVR/Temp/BurstOutput/tempburstlibs/arm64-
 --dump=Function
 --float-precision=Standard
 --target-framework=NetFramework
+--assembly-defines=Assembly-CSharp;
 --assembly-defines=Mono.Security;
 --assembly-defines=mscorlib;
 --assembly-defines=System.Configuration;
