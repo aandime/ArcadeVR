@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-public class DartboardMover : MonoBehaviour
+
+public class MalletMover : MonoBehaviour
 {
     public float speed = 1f; // Movement speed
     public float range = 2f; // Range of movement from the starting position
-
     private float minX; // Minimum x-axis value
     private float maxX; // Maximum x-axis value
     private float direction = 1f; // Current movement direction

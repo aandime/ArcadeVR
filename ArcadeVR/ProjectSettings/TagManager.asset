@@ -11,6 +11,9 @@ TagManager:
   - 5pt
   - 10pt
   - Dart
+  - Puck
+  - Player1Goal
+  - Player2Goal
   layers:
   - Default
   - TransparentFX
