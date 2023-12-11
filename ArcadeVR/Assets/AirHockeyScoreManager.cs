@@ -21,6 +21,7 @@ public class AirHockeyScoreManager : MonoBehaviour
     private int player2Score = 0;
     private bool gameStarted = false;
 
+
     private void Awake()
     {
         if (Instance == null)
@@ -70,6 +71,7 @@ public class AirHockeyScoreManager : MonoBehaviour
 
     public void PlayerScored(int playerNumber)
     {
+
         if (playerNumber == 1)
         {
             player1Score++;
